@@ -1,0 +1,121 @@
+# AI-Powered Presentation Generation System
+
+## Overview
+
+This project is an end-to-end **Generative AI system** that automatically creates PowerPoint presentations from a single user-provided title.
+
+The system leverages **Large Language Models (LLMs)** for structured slide content generation, **text-to-image diffusion models** for visual enhancement, and programmatic PPT construction to produce ready-to-download presentations with minimal human input.
+
+The project demonstrates **multi-model orchestration**, **pipeline-based design**, and **full-stack GenAI deployment**.
+
+---
+
+## Problem Statement
+
+Creating structured presentations is time-consuming and repetitive. This system automates the entire workflow by:
+
+- Generating a slide outline using an LLM
+- Creating slide-wise bullet points
+- Generating contextual images using a diffusion model
+- Assembling a complete PowerPoint file programmatically
+
+The result is a **fully automated presentation generator** from just a title.
+
+---
+
+## Key Features
+
+- Single-title input → complete PPT output
+- Structured slide outlines generated via LLM
+- Image generation using Stable Diffusion Turbo
+- Automatic bullet formatting and layout handling
+- FastAPI backend for generation
+- Streamlit-based frontend for user interaction
+- Downloadable `.pptx` output
+
+---
+
+## System Architecture
+
+User (Streamlit UI)
+└── Title Input
+└── FastAPI Backend
+└── LLM Slide Outline Generator
+└── Slide Titles
+└── Bullet Points
+└── Image Prompts
+└── Image Generation (Stable Diffusion Turbo)
+└── PPT Builder (python-pptx)
+└── Slides
+└── Text Content
+└── Images
+└── Generated PPT File
+
+
+---
+
+## Tech Stack
+
+### Backend
+- **FastAPI**
+- **Python 3.10+**
+
+### LLM & GenAI
+- **OpenAI API** (for slide outline generation)
+- **GPT-based structured JSON output**
+- **Stable Diffusion Turbo** (text-to-image generation)
+
+### Presentation Generation
+- **python-pptx**
+- Automated slide layout and formatting
+
+### Frontend
+- **Streamlit**
+- Simple UI for title input and PPT download
+
+---
+
+## Pipeline Breakdown
+
+### 1. LLM-Based Slide Outline
+- Generates:
+  - Slide titles
+  - Bullet points
+  - Image prompts
+- Enforced JSON structure for reliability
+
+### 2. Image Generation
+- Uses Stable Diffusion Turbo
+- Generates slide-specific visuals
+- Optimized for fast inference
+
+### 3. PPT Assembly
+- Title slide + content slides
+- Bullet hierarchy handling
+- Optional image embedding per slide
+
+### 4. Delivery
+- PPT file returned via API
+- Downloaded through Streamlit UI
+
+---
+
+## API Endpoint
+
+### Generate Presentation
+**Response**
+- Returns a downloadable `.pptx` file
+
+## Project Structure
+
+├── gen_ppt/
+│ ├── app.py # FastAPI entry point
+│ ├── clients.py # OpenAI client configuration
+│ ├── llm_outline.py # LLM-based slide outline generator
+│ ├── image_generator.py # Stable Diffusion image generation
+│ ├── ppt_builder.py # PPT construction logic
+│ ├── pipeline.py # End-to-end orchestration
+│ ├── ui.py # Streamlit frontend
+├── images/ # Generated images
+├── requirements.txt
+└── README.md
